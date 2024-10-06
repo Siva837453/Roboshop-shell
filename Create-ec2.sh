@@ -4,14 +4,14 @@ instances=("mongodb" "reddis" "mysql" "rabbitmq" "catalogue" "cart" "user" "ship
 domain_name="sdevops.cloud"
 hosted_zone_id="Z04630863BQ7PC3LTU7RJ"
 
-for name in ${instances[@]};do
-    if [$name == "shipping"] || [$name == "mysql"]
+for name in ${instances[@]}; do
+    if [ $name == "shipping" ] || [ $name == "mysql" ]
     then
         instance_type="t3.medium"
     else
         instance_type="t3.micro"
     fi
-    echo  Create instance for:$name with instance type: $instance_type
+    echo  "Create instance for:$name with instance type: $instance_type"
 
     instance_id=$(aws ec2 run-instances --image-id ami-09c813fb71547fc4f --instance-type $instance_type --security-group-ids sg-066492229622625dc --subnet-id subnet-0fad5ed9b521a0d09 --query 'Instances[0].InstanceId' --output text)
     echo "Instance created for: $name"
