@@ -65,7 +65,7 @@ VALIDATE $? "extracting user"
 npm install &>> $LOGFILE
 VALIDATE $? "Installing dependencies"
 
-cp /home/ec2-user/roboshop-shell/user.service /etc/systemd/system/user.service &>> $LOGFILE
+cp /home/ec2-user/Roboshop-shell/user.service /etc/systemd/system/user.service &>> $LOGFILE
 
 systemctl daemon-reload &>> $LOGFILE
 VALIDATE $? "Daemon reload"
@@ -76,7 +76,7 @@ VALIDATE $? "Enable user"
 systemctl start user &>> $LOGFILE
 VALIDATE $? "Start user"
 
-cp /home/ec2-user/roboshop-shell/mongo.repo /etc/yum.repos.d/mongo.repo &>> $LOGFILE
+cp /home/ec2-user/Roboshop-shell/mongo.repo /etc/yum.repos.d/mongo.repo &>> $LOGFILE
 VALIDATE $? "Copying mongo repo"
 
 dnf install -y mongodb-mongosh &>> $LOGFILE
